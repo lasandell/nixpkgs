@@ -16643,6 +16643,8 @@ in
 
   ctop = callPackage ../tools/system/ctop { };
 
+  cubicsdr = callPackage ../applications/radio/cubicsdr { wxGTK = wxGTK31; };
+
   cuneiform = callPackage ../tools/graphics/cuneiform {};
 
   cutecom = libsForQt5.callPackage ../tools/misc/cutecom { };
