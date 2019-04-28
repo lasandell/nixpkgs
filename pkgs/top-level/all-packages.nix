@@ -13443,6 +13443,8 @@ in
     inherit (darwin.apple_sdk.frameworks) ApplicationServices Carbon CoreServices;
   };
 
+  libsdrplay = callPackage ../development/libraries/libsdrplay { };
+
   libsieve = callPackage ../development/libraries/libsieve { };
 
   libsixel = callPackage ../development/libraries/libsixel { };
@@ -15027,6 +15029,8 @@ in
   };
 
   soapyrtlsdr = callPackage ../applications/radio/soapyrtlsdr { };
+
+  soapysdrplay = callPackage ../applications/radio/soapysdrplay { };
 
   soapyuhd = callPackage ../applications/radio/soapyuhd { };
 
