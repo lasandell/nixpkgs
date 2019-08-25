@@ -10671,6 +10671,8 @@ in
 
   libaal = callPackage ../development/libraries/libaal { };
 
+  libacars = callPackage ../development/libraries/libacars { };
+
   libaccounts-glib = callPackage ../development/libraries/libaccounts-glib { };
 
   libacr38u = callPackage ../tools/security/libacr38u { };
