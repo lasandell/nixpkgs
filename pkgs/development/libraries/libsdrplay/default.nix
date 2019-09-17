@@ -1,4 +1,4 @@
-{ stdenv, fetchurl }:
+{ stdenv, fetchurl, libudev }:
 
 stdenv.mkDerivation rec {
   name = "libsdrplay-${version}";
@@ -8,6 +8,8 @@ stdenv.mkDerivation rec {
     url = "https://www.sdrplay.com/software/SDRplay_RSP_API-Linux-${version}.run";
     sha256 = "08j56rmvk3ycpsdgvhdci84wy72jy9x20mp995fwp8zzmyg0ncp2";
   };
+
+  buildInputs = [ libudev ];
 
   unpackPhase = ''
     sh "$src" --noexec --target .

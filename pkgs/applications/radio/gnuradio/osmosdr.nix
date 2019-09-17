@@ -5,6 +5,7 @@
 , gnuradio
 , hackrf
 , libbladeRF
+, libsdrplay
 , rtl-sdr
 , soapysdr-with-plugins
 , uhd
@@ -25,9 +26,11 @@ stdenv.mkDerivation rec {
   nativeBuildInputs = [ pkgconfig ];
   buildInputs = [
     cmake makeWrapper boost
-    airspy gnuradio hackrf libbladeRF rtl-sdr uhd
+    airspy gnuradio hackrf libbladeRF rtl-sdr uhd libsdrplay
   ] ++ stdenv.lib.optionals stdenv.isLinux [ soapysdr-with-plugins ]
     ++ stdenv.lib.optionals pythonSupport [ python swig ];
+
+  cmakeFlags = ["-DENABLE_NONFREE=1"];
 
   postInstall = ''
     for prog in "$out"/bin/*; do
