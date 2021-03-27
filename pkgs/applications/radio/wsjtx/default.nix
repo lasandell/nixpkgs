@@ -1,15 +1,15 @@
-{ lib, stdenv, fetchurl, asciidoc, asciidoctor, autoconf, automake, cmake,
-  docbook_xsl, fftw, fftwFloat, gfortran, libtool, libusb1, qtbase,
+{ lib, stdenv, fetchurl, asciidoc, asciidoctor, autoconf, automake, boost,
+  cmake, docbook_xsl, fftw, fftwFloat, gfortran, libtool, libusb1, qtbase,
   qtmultimedia, qtserialport, qttools, texinfo, wrapQtAppsHook }:
 
 stdenv.mkDerivation rec {
   pname = "wsjtx";
-  version = "2.2.2";
+  version = "2.4.0-rc4";
 
   # This is a "superbuild" tarball containing both wsjtx and a hamlib fork
   src = fetchurl {
     url = "http://physics.princeton.edu/pulsar/k1jt/wsjtx-${version}.tgz";
-    sha256 = "17agyrhclqyahgdwba8vi9sl7vq03sm00jlyrmjgv34a4czidg0w";
+    sha256 = "10qgF3QTUp/TNBU6Yl3II+gOCMsbgmyRZsY8XRBN4v0=";
   };
 
   # Hamlib builds with autotools, wsjtx builds with cmake
@@ -18,7 +18,7 @@ stdenv.mkDerivation rec {
     asciidoc asciidoctor autoconf automake cmake docbook_xsl gfortran libtool
     qttools texinfo wrapQtAppsHook
   ];
-  buildInputs = [ fftw fftwFloat libusb1 qtbase qtmultimedia qtserialport ];
+  buildInputs = [ boost fftw fftwFloat libusb1 qtbase qtmultimedia qtserialport ];
 
   # Remove Git dependency from superbuild since sources are included
   patches = [ ./super.patch ];
